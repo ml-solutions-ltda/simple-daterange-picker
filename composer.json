@@ -34,5 +34,11 @@
         "sort-packages": true
     },
     "minimum-stability": "dev",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://nova.mlsolutions.net.br"
+    }
+  ],
     "prefer-stable": true
 }
