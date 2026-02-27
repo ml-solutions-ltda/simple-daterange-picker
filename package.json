@@ -8,7 +8,7 @@
     "hot": "mix watch --hot",
     "prod": "npm run production",
     "production": "mix --production",
-    "nova:install": "npm --prefix='../../vendor/laravel/nova' ci"
+    "nova:install": "npm --prefix='./vendor/laravel/nova' ci"
   },
   "devDependencies": {
     "@vue/compiler-sfc": "^3.2.22",
@@ -16,5 +16,7 @@
     "postcss": "^8.3.11",
     "vue-loader": "^16.8.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "lodash": "^4.17.23"
+  }
 }
