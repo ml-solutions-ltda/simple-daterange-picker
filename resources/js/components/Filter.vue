@@ -102,7 +102,7 @@ export default {
         filterClass: this.filterKey,
         value: (
           (this.currentStartDate && this.currentEndDate) ? 
-          (this.currentStartDate.format('YYYY-MM-DD') + ' to ' + this.currentEndDate.format('YYYY-MM-DD')) :
+          (this.currentStartDate.format('YYYY-MM-DD') + ' para ' + this.currentEndDate.format('YYYY-MM-DD')) :
           null
         ),
       })
@@ -135,7 +135,7 @@ export default {
       })
       .on('apply.daterangepicker', function(ev, picker) {
         if (ref.currentStartDate && ref.currentEndDate) {
-          ref.value = ref.currentStartDate.format('MM/DD/YYYY') + ' to ' + ref.currentEndDate.format('MM/DD/YYYY')
+          ref.value = ref.currentStartDate.format('DD/MM/YYYY') + ' para ' + ref.currentEndDate.format('DD/MM/YYYY')
         }
       })
     },
@@ -152,7 +152,7 @@ export default {
       let endDate = moment()
 
       if (dateRange) {
-        const parsedDateRange = dateRange.split(' to ')
+        const parsedDateRange = dateRange.split(' para ')
         if (parsedDateRange.length == 2) {
           try {
             startDate = moment(parsedDateRange[0], "YYYY-MM-DD")
@@ -160,8 +160,8 @@ export default {
           } catch(e){}
         }
       }
-      this.startDate = startDate.format('MM/DD/YYYY')
-      this.endDate = endDate.format('MM/DD/YYYY')
+      this.startDate = startDate.format('DD/MM/YYYY')
+      this.endDate = endDate.format('DD/MM/YYYY')
 
       this.currentStartDate = startDate
       this.currentEndDate = endDate

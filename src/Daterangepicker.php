@@ -1,13 +1,13 @@
 <?php
 
-namespace Rpj\Daterangepicker;
+namespace MlSolutions\Daterangepicker;
 
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Laravel\Nova\Filters\Filter;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Rpj\Daterangepicker\DateHelper as Helper;
+use MlSolutions\Daterangepicker\DateHelper as Helper;
 
 class Daterangepicker extends Filter
 {
@@ -85,7 +85,7 @@ class Daterangepicker extends Filter
         [$start, $end] = Helper::getParsedDatesGroupedRanges($this->default);
 
         if ($start && $end) {
-            return $start->format('Y-m-d').' to '.$end->format('Y-m-d');
+            return $start->format('Y-m-d').' para '.$end->format('Y-m-d');
         }
 
         return null;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Rpj\Daterangepicker;
+namespace MlSolutions\Daterangepicker;
 
 use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Events\ServingNova;

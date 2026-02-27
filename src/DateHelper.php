@@ -1,35 +1,35 @@
 <?php
 
-namespace Rpj\Daterangepicker;
+namespace MlSolutions\Daterangepicker;
 
 use Exception;
 use Illuminate\Support\Carbon;
 
 class DateHelper
 {
-    const ALL = 'All';
+    const ALL = 'Todos';
 
-    const TODAY = 'Today';
+    const TODAY = 'Hoje';
 
-    const YESTERDAY = 'Yesterday';
+    const YESTERDAY = 'Ontem';
 
-    const LAST_2_DAYS = 'Last 2 days';
+    const LAST_2_DAYS = 'Últimos 2 dias';
 
-    const LAST_7_DAYS = 'Last 7 days';
+    const LAST_7_DAYS = 'Últimos 7 dias';
 
-    const THIS_WEEK = 'This week';
+    const THIS_WEEK = 'Essa semana';
 
-    const LAST_WEEK = 'Last week';
+    const LAST_WEEK = 'Semana passada';
 
-    const LAST_30_DAYS = 'Last 30 days';
+    const LAST_30_DAYS = 'Últimos 30 dias';
 
-    const THIS_MONTH = 'This month';
+    const THIS_MONTH = 'Este mês';
 
-    const LAST_MONTH = 'Last month';
+    const LAST_MONTH = 'Mês passado';
 
-    const LAST_6_MONTHS = 'Last 6 months';
+    const LAST_6_MONTHS = 'Últimos 6 meses';
 
-    const THIS_YEAR = 'This year';
+    const THIS_YEAR = 'Este ano';
 
     public static function defaultRanges(): array
     {
@@ -89,8 +89,8 @@ class DateHelper
                 $start->startOfYear();
                 break;
             default:
-                //Ex. 2020-06-15 to 2023-06-15
-                $parsed = explode(' to ', $value);
+                //Ex. 2020-06-15 para 2023-06-15
+                $parsed = explode(' para ', $value);
                 if (count($parsed) == 1) {
                     $start = Carbon::createFromFormat('Y-m-d', $value);
                     $end = $start->clone();

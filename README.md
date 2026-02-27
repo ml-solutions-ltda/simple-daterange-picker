@@ -5,14 +5,14 @@ A filter for Nova 4 that displays a Date Range Picker instead of a single date p
 ### Install
 
 Run this command in your nova project:
-`composer require rpj/daterangepicker`
+`composer require mlsolutions/daterangepicker`
 
 ### How to use
 
 In your Nova resource, just add DateRangeFilter class in the filters function, and include the column(s) that you would like to use as filter the resource.
 
 ```php
- use Rpj\Daterangepicker\Daterangepicker;
+ use MlSolutions\Daterangepicker\Daterangepicker;
 
  public function filters(Request $request)
     {
@@ -25,7 +25,7 @@ In your Nova resource, just add DateRangeFilter class in the filters function, a
 Column name can be a string or an array of strings with two items. Otherwise an exception will be fired.
 
 ```php
- use Rpj\Daterangepicker\Daterangepicker;
+ use MlSolutions\Daterangepicker\Daterangepicker;
 
  public function filters(Request $request)
     {
@@ -41,8 +41,8 @@ Additionally, we added a custom date range picker that allows user to specify th
 this takes, the column to check the date range picker and as well as the column to order by with the asc/desc direction.
 
 ```php
-use Rpj\Daterangepicker\Daterangepicker;
-use Rpj\Daterangepicker\DateHelper;
+use MlSolutions\Daterangepicker\Daterangepicker;
+use MlSolutions\Daterangepicker\DateHelper;
 
 public function filters(Request $request)
 {
@@ -55,8 +55,8 @@ public function filters(Request $request)
 Finally, we have added the option to set a custom pre set dates using Carbon class. Also you can set a min and max date for the date range component.
 
 ```php
-use Rpj\Daterangepicker\Daterangepicker;
-use Rpj\Daterangepicker\DateHelper;
+use MlSolutions\Daterangepicker\Daterangepicker;
+use MlSolutions\Daterangepicker\DateHelper;
 use Carbon\Carbon;
 
 public function filters(Request $request)
