@@ -76,7 +76,7 @@ public function filters(Request $request)
             'Last month' => [Carbon::now()->subMonth()->startOfMonth(),Carbon::now()->subMonth()->endOfMonth()],
         ])
         ->setMaxDate(Carbon::today())
-        ->setMinDate(Carbon::today()->endOfYear()),
+        ->setMinDate(Carbon::today()->startOfYear()),
     ];
 }
 

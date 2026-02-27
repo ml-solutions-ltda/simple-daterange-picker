@@ -126,6 +126,9 @@ export default {
 			  "endDate": ref.endDate,
         "minDate": (minDate ? moment(minDate) : null),
         "maxDate": (maxDate ? moment(maxDate) : null),
+        "locale": {
+          "format": "DD/MM/YYYY",
+        },
         "ranges": ref.parseRanges(),
       }, function(start, end, label) {
         if (start && end) {
@@ -152,7 +155,7 @@ export default {
       let endDate = moment()
 
       if (dateRange) {
-        const parsedDateRange = dateRange.split(' para ')
+        const parsedDateRange = dateRange.split(/\s(?:to|para)\s/i)
         if (parsedDateRange.length == 2) {
           try {
             startDate = moment(parsedDateRange[0], "YYYY-MM-DD")

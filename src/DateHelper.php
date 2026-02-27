@@ -31,6 +31,23 @@ class DateHelper
 
     const THIS_YEAR = 'Este ano';
 
+    private const LEGACY_LABELS = [
+        'All' => self::ALL,
+        'Today' => self::TODAY,
+        'Yesterday' => self::YESTERDAY,
+        'Last 2 days' => self::LAST_2_DAYS,
+        'Last 7 days' => self::LAST_7_DAYS,
+        'This week' => self::THIS_WEEK,
+        'Last week' => self::LAST_WEEK,
+        'Last 30 days' => self::LAST_30_DAYS,
+        'This month' => self::THIS_MONTH,
+        'Last month' => self::LAST_MONTH,
+        'Last 6 months' => self::LAST_6_MONTHS,
+        'This year' => self::THIS_YEAR,
+    ];
+
+    private const RANGE_SEPARATORS = [' para ', ' to '];
+
     public static function defaultRanges(): array
     {
         return [
@@ -46,6 +63,13 @@ class DateHelper
 
     public static function getParsedDatesGroupedRanges($value): array
     {
+        if (!is_string($value)) {
+            throw new Exception('Date range picker: Date format incorrect.');
+        }
+
+        $value = trim($value);
+        $value = self::LEGACY_LABELS[$value] ?? $value;
+
         if ($value == self::ALL)
             return [null, null];
 
@@ -73,7 +97,7 @@ class DateHelper
                 $end = $start->clone()->endOfWeek(Carbon::SUNDAY);
                 break;
             case self::LAST_30_DAYS:
-                $start->subDays(30);
+                $start->subDays(29);
                 break;
             case self::THIS_MONTH:
                 $start->startOfMonth();
@@ -89,8 +113,8 @@ class DateHelper
                 $start->startOfYear();
                 break;
             default:
-                //Ex. 2020-06-15 para 2023-06-15
-                $parsed = explode(' para ', $value);
+                //Ex. 2020-06-15 para 2023-06-15 OR 2020-06-15 to 2023-06-15
+                $parsed = self::splitDateRange($value);
                 if (count($parsed) == 1) {
                     $start = Carbon::createFromFormat('Y-m-d', $value);
                     $end = $start->clone();
@@ -106,5 +130,17 @@ class DateHelper
             $start->setTime(0, 0, 0),
             $end->setTime(23, 59, 59),
         ];
+    }
+
+    private static function splitDateRange(string $value): array
+    {
+        foreach (self::RANGE_SEPARATORS as $separator) {
+            $parsed = explode($separator, $value);
+            if (count($parsed) == 2) {
+                return [trim($parsed[0]), trim($parsed[1])];
+            }
+        }
+
+        return [$value];
     }
 }
